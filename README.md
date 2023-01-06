@@ -10,6 +10,9 @@
 8. DiaryItem에 수정하기 버튼을 만들고, App.js에 map을 이용해서 새로운 컨텐츠로 변경되었으면 변경하고 아니면 그대로 item을 보여줌. 
 9. DiaryItem에 prop으로 전달함. 수정하기 버튼을 누르면 toggle로 수정취소, 수정완료 버튼이 보이게 만듬.
 10. 수정하기 버튼에도 focus 이벤트를 줌.
+11. useEffect를 이용하여 컴포넌트 Mount 시점에 API를 호출하고 해당 API의 결과값을 초기값으로 이용.
+12. useMemo를 이용해서 최적화. (data.length가 바뀔때만 console.log가 호출되도록)
+13. useCallback, useReducer, context 사용해서 성능 최적화.
 
 ** 입력한 시간 
 const create_date = new Date().getTime()을 사용해서 그걸 다시 {new Date(create_date).toLocaleString()} 로 하면 2023. 1. 6. 오후 4:42:36 이렇게 뜸!
