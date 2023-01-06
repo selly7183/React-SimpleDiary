@@ -7,7 +7,8 @@ export default function DiaryItem({ author, content, emotion, created_date }) {
 				<span>
 					작성자 : {author} | 감정점수 : {emotion}
 				</span>
-				<span>{new Date(created_date).toLocaleString()}</span>
+				<br></br>
+				<span className="date">{new Date(created_date).toLocaleString()}</span>
 			</div>
 			<div className="content">{content}</div>
 		</div>
