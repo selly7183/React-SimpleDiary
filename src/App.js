@@ -99,10 +99,13 @@ function App() {
 		<DiaryStateContext.Provider value={data}>
 			<DiaryDispatchContext.Provider value={memoizedDispatches}>
 				<DiaryEditor />
-				<div>전체 일기 : {data.length}</div>
-				<div>기분 좋은 일기 개수: {goodCount}</div>
-				<div>기분 나쁜 일기 개수 : {badCount}</div>
-				<div>기분 좋은 일기 비율 : {goodRatio}</div>
+				<div className="count">
+					<div>전체 일기 : {data.length}</div>
+					<div>기분 좋은 일기 개수: {goodCount}</div>
+					<div>기분 나쁜 일기 개수 : {badCount}</div>
+					<div>기분 좋은 일기 비율 : {goodRatio}</div>
+				</div>
+
 				<DiaryList />
 			</DiaryDispatchContext.Provider>
 		</DiaryStateContext.Provider>
