@@ -1,70 +1,15 @@
-# Getting Started with Create React App
+# Simple Diary Editior
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. useState로 input과 textarea, emotion, date를 같은 state를 가질 수 있게 함.
+2. onChange 이벤트도 동일하게 같은 handle event를 갖게 함.
+3. useRef를 이용하여 content의 length가 1보다 작고, 5보다 작을때 버튼을 눌렀을때 focus가 일어나도록 함.
+4. DiaryList에 map을 이용해서 dummyList를 prop으로 전달해서 하나하나씩 화면에 보이게 불러옴.
+5. 새로운 데이터를 추가하면 DiaryEditor에 입력, DiaryList에 입력된게 나타나야하기 때문에 App.js에 공통 state를 만듬.
+6. DiaryEditor에 onCreate 함수를 prop으로 전달해서 내용을 입력하면 추가하기 기능을 만듬.
+7. DiaryItem에 삭제하기 버튼을 만들고, App.js에 filter을 통해 id값을 이용해서 onDelete함수를 만들어서 DiaryItem에 prop으로 전달함.
+8. DiaryItem에 수정하기 버튼을 만들고, App.js에 map을 이용해서 새로운 컨텐츠로 변경되었으면 변경하고 아니면 그대로 item을 보여줌. 
+9. DiaryItem에 prop으로 전달함. 수정하기 버튼을 누르면 toggle로 수정취소, 수정완료 버튼이 보이게 만듬.
+10. 수정하기 버튼에도 focus 이벤트를 줌.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+** 입력한 시간 
+const create_date = new Date().getTime()을 사용해서 그걸 다시 {new Date(create_date).toLocaleString()} 로 하면 2023. 1. 6. 오후 4:42:36 이렇게 뜸!
