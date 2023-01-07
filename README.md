@@ -15,4 +15,4 @@
 13. useCallback, useReducer, context 사용해서 성능 최적화.
 
 ** 입력한 시간 
-const create_date = new Date().getTime()을 사용해서 그걸 다시 {new Date(create_date).toLocaleString()} 로 하면 2023. 1. 6. 오후 4:42:36 이렇게 뜸!
+const create_date = new Date().getTime()을 사용해서 ms를 다시 {new Date(create_date).toLocaleString()} 로 하면 2023. 1. 6. 오후 4:42:36 이렇게 뜸!
