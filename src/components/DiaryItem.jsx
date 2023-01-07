@@ -1,14 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { DiaryDispatchContext } from "../App";
 
-const DiaryItem = ({
-	author,
-	content,
-	emotion,
-	created_date,
-	onRemove,
-	id,
-	onEdit,
-}) => {
+const DiaryItem = ({ author, content, emotion, created_date, id }) => {
+	const { onRemove, onEdit } = useContext(DiaryDispatchContext);
+
 	const [isEdit, setIsEdit] = useState(false);
 	const toggleIsEdit = () => setIsEdit(!isEdit);
 	const [localContent, setLocalContent] = useState(content);
@@ -58,13 +53,21 @@ const DiaryItem = ({
 			</div>
 			{isEdit ? (
 				<>
-					<button onClick={handleQuitEdit}>수정취소</button>
-					<button onClick={handleEdit}>수정완료</button>
+					<button onClick={handleQuitEdit} className="btn btn__left">
+						수정취소
+					</button>
+					<button onClick={handleEdit} className="btn btn__right">
+						수정완료
+					</button>
 				</>
 			) : (
 				<>
-					<button onClick={handleRemove}>삭제하기</button>
-					<button onClick={toggleIsEdit}>수정하기</button>
+					<button onClick={handleRemove} className="btn btn__left">
+						삭제하기
+					</button>
+					<button onClick={toggleIsEdit} className="btn btn__right">
+						수정하기
+					</button>
 				</>
 			)}
 		</div>

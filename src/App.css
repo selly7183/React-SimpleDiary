@@ -1,5 +1,9 @@
-/* editor */
+/*app*/
+.count {
+	padding: 20px 20px 0 20px;
+}
 
+/* editor */
 .DiaryEditor {
 	border: 1px solid gray;
 	text-align: center;
@@ -31,11 +35,15 @@ textarea {
 	width: 500px;
 	padding: 10px;
 	cursor: pointer;
-	background-color: palevioletred;
+	background-color: plum;
 	border: none;
 	outline: none;
 	color: #fff;
 	border: 2px solid thistle;
+	transition: all 0.3s ease-in-out;
+}
+.DiaryEditor button:hover {
+	background-color: pink;
 }
 
 /*list*/
@@ -47,6 +55,7 @@ textarea {
 .DiaryList h2 {
 	text-align: center;
 }
+
 /* item */
 .DiaryItem {
 	background-color: rgb(240, 240, 240);
@@ -60,6 +69,9 @@ textarea {
 }
 .DiaryItem .date {
 	color: gray;
+	display: block;
+	margin-top: 5px;
+	font-size: 15px;
 }
 .DiaryItem .content {
 	font-weight: bold;
@@ -69,4 +81,19 @@ textarea {
 .DiaryItem textarea {
 	width: 100%;
 	height: 50px;
+}
+.DiaryItem .btn {
+	border: none;
+	background-color: #fff;
+	padding: 10px;
+	margin-right: 7px;
+	border: 2px solid transparent;
+	cursor: pointer;
+}
+.DiaryItem .btn.btn__left {
+	background-color: plum;
+	color: #fff;
+}
+.DiaryItem .btn.btn__right {
+	border: 2px solid plum;
 }
