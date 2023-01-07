@@ -35,11 +35,15 @@ textarea {
 	width: 500px;
 	padding: 10px;
 	cursor: pointer;
-	background-color: palevioletred;
+	background-color: plum;
 	border: none;
 	outline: none;
 	color: #fff;
 	border: 2px solid thistle;
+	transition: all 0.3s ease-in-out;
+}
+.DiaryEditor button:hover {
+	background-color: pink;
 }
 
 /*list*/
@@ -65,6 +69,9 @@ textarea {
 }
 .DiaryItem .date {
 	color: gray;
+	display: block;
+	margin-top: 5px;
+	font-size: 15px;
 }
 .DiaryItem .content {
 	font-weight: bold;
@@ -84,9 +91,9 @@ textarea {
 	cursor: pointer;
 }
 .DiaryItem .btn.btn__left {
-	background-color: palevioletred;
+	background-color: plum;
 	color: #fff;
 }
 .DiaryItem .btn.btn__right {
-	border: 2px solid palevioletred;
+	border: 2px solid plum;
 }
