@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { DiaryStateContext } from "../App";
+import { DiaryStateContext } from "./App";
 import DiaryItem from "./DiaryItem";
 
 const DiaryList = () => {

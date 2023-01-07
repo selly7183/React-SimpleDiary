@@ -7,8 +7,8 @@ import React, {
 } from "react";
 
 import "./App.css";
-import DiaryEditor from "./components/DiaryEditor";
-import DiaryList from "./components/DiaryList";
+import DiaryEditor from "./DiaryEditor";
+import DiaryList from "./DiaryList";
 
 const reducer = (state, action) => {
 	switch (action.type) {
@@ -69,13 +69,16 @@ const App = () => {
 		getData();
 	}, []);
 
-	const onCreate = useCallback((author, content, emotion) => {
-		dispatch({
-			type: "CREATE",
-			data: { author, content, emotion, id: dataId.current },
-		});
-		dataId.current += 1;
-	}, []);
+	const onCreate = useCallback(
+		(author, content, emotion) => {
+			dispatch({
+				type: "CREATE",
+				data: { author, content, emotion, id: dataId.current },
+			});
+			dataId.current += 1;
+		},
+		[data]
+	);
 
 	const onRemove = useCallback((targetId) => {
 		dispatch({ type: "REMOVE", targetId });

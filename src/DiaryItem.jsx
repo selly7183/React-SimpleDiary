@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { DiaryDispatchContext } from "../App";
+import { DiaryDispatchContext } from "./App";
 
 const DiaryItem = ({ author, content, emotion, created_date, id }) => {
 	const { onRemove, onEdit } = useContext(DiaryDispatchContext);

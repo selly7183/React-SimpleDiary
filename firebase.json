@@ -1,0 +1,7 @@
+{
+	"hosting": {
+		"site": "simplediary-90517",
+		"public": "public",
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+	}
+}
