@@ -1,11 +1,11 @@
-import {
-	createContext,
+import React, {
 	useCallback,
 	useEffect,
 	useMemo,
 	useReducer,
 	useRef,
 } from "react";
+
 import "./App.css";
 import DiaryEditor from "./components/DiaryEditor";
 import DiaryList from "./components/DiaryList";
@@ -28,7 +28,12 @@ const reducer = (state, action) => {
 		}
 		case "EDIT": {
 			return state.map((it) =>
-				it.id === action.targetId ? { ...it, content: action.newContent } : it
+				it.id === action.targetId
+					? {
+							...it,
+							content: action.newContent,
+					  }
+					: it
 			);
 		}
 		default:
@@ -36,28 +41,27 @@ const reducer = (state, action) => {
 	}
 };
 
-export const DiaryStateContext = createContext();
-export const DiaryDispatchContext = createContext();
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 
-function App() {
+const App = () => {
 	const [data, dispatch] = useReducer(reducer, []);
-
 	const dataId = useRef(0);
-
 	const getData = async () => {
 		const res = await fetch(
 			"https://jsonplaceholder.typicode.com/comments"
 		).then((res) => res.json());
 
-		const initData = res.slice(0, 20).map((item) => {
+		const initData = res.slice(0, 20).map((it) => {
 			return {
-				author: item.email,
-				content: item.body,
+				author: it.email,
+				content: it.body,
 				emotion: Math.floor(Math.random() * 5) + 1,
 				created_date: new Date().getTime(),
 				id: dataId.current++,
 			};
 		});
+
 		dispatch({ type: "INIT", data: initData });
 	};
 
@@ -70,7 +74,6 @@ function App() {
 			type: "CREATE",
 			data: { author, content, emotion, id: dataId.current },
 		});
-
 		dataId.current += 1;
 	}, []);
 
@@ -79,7 +82,11 @@ function App() {
 	}, []);
 
 	const onEdit = useCallback((targetId, newContent) => {
-		dispatch({ type: "EDIT", targetId, newContent });
+		dispatch({
+			type: "EDIT",
+			targetId,
+			newContent,
+		});
 	}, []);
 
 	const memoizedDispatches = useMemo(() => {
@@ -87,9 +94,9 @@ function App() {
 	}, []);
 
 	const getDiaryAnalysis = useMemo(() => {
-		const goodCount = data.filter((item) => item.emotion >= 3).length;
+		const goodCount = data.filter((it) => it.emotion >= 3).length;
 		const badCount = data.length - goodCount;
-		const goodRatio = (goodCount / data.length) * 100;
+		const goodRatio = (goodCount / data.length) * 100.0;
 		return { goodCount, badCount, goodRatio };
 	}, [data.length]);
 
@@ -98,18 +105,19 @@ function App() {
 	return (
 		<DiaryStateContext.Provider value={data}>
 			<DiaryDispatchContext.Provider value={memoizedDispatches}>
-				<DiaryEditor />
-				<div className="count">
-					<div>전체 일기 : {data.length}</div>
-					<div>기분 좋은 일기 개수: {goodCount}</div>
-					<div>기분 나쁜 일기 개수 : {badCount}</div>
-					<div>기분 좋은 일기 비율 : {goodRatio}</div>
+				<div className="App">
+					<DiaryEditor />
+					<div className="count">
+						<div>전체 일기 : {data.length}</div>
+						<div>기분 좋은 일기 개수 : {goodCount}</div>
+						<div>기분 나쁜 일기 개수 : {badCount}</div>
+						<div>기분 좋은 일기 비율 : {goodRatio}%</div>
+					</div>
+					<DiaryList />
 				</div>
-
-				<DiaryList />
 			</DiaryDispatchContext.Provider>
 		</DiaryStateContext.Provider>
 	);
-}
+};
 
 export default App;
