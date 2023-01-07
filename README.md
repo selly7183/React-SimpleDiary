@@ -1,4 +1,6 @@
 # Simple Diary Editior
+![simplyDiary](https://user-images.githubusercontent.com/88068412/211130853-0b60a41a-72ee-4978-9020-a3646d101f51.png)
+
 
 1. useState로 input과 textarea, emotion, date를 같은 state를 가질 수 있게 함.
 2. onChange 이벤트도 동일하게 같은 handle event를 갖게 함.
